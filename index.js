@@ -1,34 +1,17 @@
 const express = require('express');
 const app = express();
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var upload = multer();
 const port = 3000;
 
-app.get('/', function(req, res){
-  res.render('form');
+app.use(express.json());
+
+app.post('/api/users', (req, res) => {
+  const user = req.body;
+
+  // logic to store the user in a database
+
+  res.status(201).send({ message: 'User created successfully' });
 });
-
-app.set('view engine', 'pug');
-app.set('views', './views');
-
-// for parsing application/json
-app.use(bodyParser.json()); 
-
-// for parsing application/xwww-
-app.use(bodyParser.urlencoded({ extended: true })); 
-//form-urlencoded
-
-// for parsing multipart/form-data
-app.use(upload.array()); 
-app.use(express.static('public'));
-
-app.post('/', function(req, res){
-  console.log(req.body);
-  res.send("recieved your request!");
-});
-
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Server started on http://localhost:${port}`);
+});
