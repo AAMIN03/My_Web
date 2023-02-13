@@ -15,14 +15,16 @@ app.post('/', (req, res) => {
 
   if(user.operation=="sum"){
     for(var i=0;i<user.values.length;i++)ans+=user.values[i];
+    console.log(ans);
+    res.status(201).send({ message: 'Created: The request was successful, and a resource was created.' });
   }else if(user.operation=="multiply"){
     ans=1;
     for(var i=0;i<user.values.length;i++)ans*=user.values[i];
+    console.log(ans);
+    res.status(201).send({ message: 'Created: The request was successful, and a resource was created.' });
+  }else{
+    res.status(401).send({ message: 'Bad Request: The request could not be understood or was missing required parameters.' });
   }
-
-  console.log(ans);
-
-  res.status(201).send({ message: 'User created successfully' });
 });
 
 app.listen(port, () => {
