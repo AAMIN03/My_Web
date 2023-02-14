@@ -10,7 +10,8 @@ app.use(express.json());
 
 app.post('/', (req, res) => {
   const user = req.body;
-  console.log(user);
+  //console.log(user);
+  //res.send({user});
   var ans=0;
 
   // check all requirements first
