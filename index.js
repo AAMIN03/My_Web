@@ -13,17 +13,19 @@ app.post('/', (req, res) => {
   console.log(user);
   var ans=0;
 
+  // check all requirements first
+
   if(user.operation=="sum"){
     for(var i=0;i<user.values.length;i++)ans+=user.values[i];
     console.log(ans);
-    res.status(201).send({ message: 'Created: The request was successful, and a resource was created.' });
+    res.status(200).send({ answer : ans });
   }else if(user.operation=="multiply"){
     ans=1;
     for(var i=0;i<user.values.length;i++)ans*=user.values[i];
     console.log(ans);
-    res.status(201).send({ message: 'Created: The request was successful, and a resource was created.' });
+    res.status(200).send({ answer : ans });
   }else{
-    res.status(401).send({ message: 'Bad Request: The request could not be understood or was missing required parameters.' });
+    res.status(400).send({ message: 'Bad Request: The request could not be understood or was missing required parameters.' });
   }
 });
 
