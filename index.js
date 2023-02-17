@@ -13,6 +13,9 @@ app.post('/', (req, res) => {
   //console.log(user);
   //res.send({user});
   var ans=0;
+  if (!user.operation || !user.values) {
+    res.status(400).send({ error: 'Required parameters missing' });
+  }
 
   // check all requirements first
 
