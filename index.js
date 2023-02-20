@@ -4,10 +4,6 @@ const port = 3000;
 
 app.use(express.json());
 
-// app.get('/',(req,res)=>{
-//   res.send("Hii there I'm Aamin");
-// })
-
 app.post('/', (req, res) => {
   const user = req.body;
   //console.log(user);
